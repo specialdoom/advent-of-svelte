@@ -1,2 +1,15 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+	import Table from '$lib/components/table/Table.svelte';
+	import TableCell from '$lib/components/table/TableCell.svelte';
+	import TableRow from '$lib/components/table/TableRow.svelte';
+
+	const headers = ['Name', 'Tally', 'Naughty'];
+</script>
+
+<Table {headers}>
+	<TableRow>
+		<TableCell>Bogdan</TableCell>
+		<TableCell>100</TableCell>
+		<TableCell>Naughty</TableCell>
+	</TableRow>
+</Table>

@@ -1,12 +1,31 @@
 <script lang="ts">
-	import Magnifier from '$lib/icons/Magnifier.svelte';
-import ThemeSwitcher from './ThemeSwitcher.svelte';
+	import { snow } from '$lib/client/services';
+	import Magnifier from '$lib/shared/icons/Magnifier.svelte';
+	import Sparkles from '$lib/shared/icons/Sparkles.svelte';
+	import IconButton from '../button/IconButton.svelte';
+	import ThemeSwitcher from '../theme-switcher/ThemeSwitcher.svelte';
+	import Tooltip from '$lib/shared/components/tooltip/Tooltip.svelte';
 
 	type Props = {
 		title: string;
 	};
 
 	let { title } = $props<Props>();
+	let showSnowflakes = $state(true);
+
+	$effect(() => {
+		if (showSnowflakes) {
+			snow.start();
+			snow.show();
+		} else {
+			snow.stop();
+			snow.hide();
+		}
+	});
+
+	function onClick() {
+		showSnowflakes = !showSnowflakes;
+	}
 </script>
 
 <header
@@ -14,9 +33,9 @@ import ThemeSwitcher from './ThemeSwitcher.svelte';
 >
 	<nav class="flex basis-full items-center w-full mx-auto px-4 sm:px-6 md:px-8" aria-label="Global">
 		<div class="me-5 lg:me-0 lg:hidden">
-			<a class="flex-none text-xl font-semibold dark:text-white" href="/" aria-label={title}
-				>{title}</a
-			>
+			<a class="flex-none text-xl font-semibold dark:text-white" href="/" aria-label={title}>
+				{title}
+			</a>
 		</div>
 		<div
 			class="w-full flex items-center justify-end ms-auto sm:justify-between sm:gap-x-3 sm:order-3"
@@ -56,7 +75,10 @@ import ThemeSwitcher from './ThemeSwitcher.svelte';
 					/>
 				</div>
 			</div>
-			<div class="flex flex-row items-center justify-end gap-2">
+			<div class="flex flex-row items-center justify-end gap-4">
+				<Tooltip label="Toogle snow">
+					<IconButton icon={Sparkles} onclick={onClick} />
+				</Tooltip>
 				<ThemeSwitcher />
 			</div>
 		</div>

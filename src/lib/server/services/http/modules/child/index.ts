@@ -1,10 +1,10 @@
-import getAll from "./get-all";
+import getAll from './get-all';
 
 /** Get the {@link ChildHttpClient} module for the children CRUD provider. */
 export default function getChildHttpClient(): ChildHttpClient {
 	return Object.freeze({
-		getAll,
-	})
+		getAll
+	});
 }
 
 /** Http client interface for the children list provider. */

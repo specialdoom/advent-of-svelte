@@ -77,7 +77,7 @@
 			{#snippet icon()}
 				👺
 			{/snippet}
-			{data.nicest?.name}
+			{data.naughtiest?.name}
 		</Card>
 		<Card title="Cookie tracker">
 			{#snippet icon()}

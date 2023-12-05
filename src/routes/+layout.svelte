@@ -16,7 +16,7 @@
 	});
 </script>
 
-<div class="w-full min-h-screen dark:bg-slate-900">
+<div class="w-full min-h-screen dark:bg-slate-900 text-gray-800 dark:text-gray-200">
 	<Header title="Santa's dashboard" />
 	<Sidebar title="Santa's dashboard" />
 	<div class="w-full min-h-full pt-4 pb-7 px-4 sm:px-6 md:px-8 lg:ps-72">

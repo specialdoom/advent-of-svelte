@@ -77,7 +77,7 @@
 			</div>
 			<div class="flex flex-row items-center justify-end gap-4">
 				<Tooltip label="Toogle snow">
-					<IconButton icon={Sparkles} onclick={onClick} />
+					<IconButton onclick={onClick}>❄️</IconButton>
 				</Tooltip>
 				<ThemeSwitcher />
 			</div>

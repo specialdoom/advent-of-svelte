@@ -1,8 +1,10 @@
 <script lang="ts">
-	import Button from '$lib/shared/components/button/Button.svelte';
+	import type { Child } from '$lib/server/services/http/modules/index.js';
 	import Card from '$lib/shared/components/card/Card.svelte';
+	import CookieCounter from '$lib/shared/components/cookie-counter/CookieCounter.svelte';
 	import Dropdown from '$lib/shared/components/dropdown/Dropdown.svelte';
 	import DropdownItem from '$lib/shared/components/dropdown/DropdownItem.svelte';
+	import LegendIndicator from '$lib/shared/components/legend-indicator/LegendIndicator.svelte';
 	import Pagination from '$lib/shared/components/pagination/Pagination.svelte';
 	import Table from '$lib/shared/components/table/Table.svelte';
 	import TableCell from '$lib/shared/components/table/TableCell.svelte';
@@ -14,11 +16,11 @@
 
 	let { data } = $props();
 
-	let page = $state(0);
 	const pageSize = 5;
+
+	let page = $state(0);
 	let totalPages = $derived(Math.ceil(data.children.length / pageSize));
 	let children = $state(data.children.slice(0, pageSize));
-
 	let filter = $state<string[]>([]);
 
 	$effect(() => {
@@ -62,6 +64,7 @@
 	}
 </script>
 
+<LegendIndicator label="Part of day 1 and 2" />
 <div class="max-w-[85rem] py-4 mx-auto">
 	<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
 		<Card title="Nicest">
@@ -75,6 +78,12 @@
 				👺
 			{/snippet}
 			{data.nicest?.name}
+		</Card>
+		<Card title="Cookie tracker">
+			{#snippet icon()}
+				🍪
+			{/snippet}
+			<CookieCounter />
 		</Card>
 	</div>
 </div>
@@ -123,18 +132,17 @@
 			<TableHeader>Tally</TableHeader>
 			<TableHeader>Naughty or Nice</TableHeader>
 		{/snippet}
-		{#snippet row(item: { name: any; tally: number; })}
-			{@const isNice = item.tally >= 0}
+		{#snippet row(item: Child)}
 			<TableCell>{item.name}</TableCell>
 			<TableCell>{item.tally}</TableCell>
 			<TableCell>
-				<Tag variant={isNice ? 'green' : 'red'}>
-					{isNice ? 'Nice' : 'Naughty'}
+				<Tag variant={item.tally >= 0 ? 'green' : 'red'}>
+					{item.tally >= 0 ? 'Nice' : 'Naughty'}
 				</Tag>
 			</TableCell>
 		{/snippet}
 	</Table>
 	<TableFooter>
-		<Pagination total={data.children.length} {page} {pageSize} next={onNext} prev={onPrev} />
+		<Pagination total={data?.children?.length} {page} {pageSize} next={onNext} prev={onPrev} />
 	</TableFooter>
 </TableWrapper>

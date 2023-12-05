@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { snow } from '$lib/client/services';
 	import Magnifier from '$lib/shared/icons/Magnifier.svelte';
-	import Sparkles from '$lib/shared/icons/Sparkles.svelte';
 	import IconButton from '../button/IconButton.svelte';
 	import ThemeSwitcher from '../theme-switcher/ThemeSwitcher.svelte';
 	import Tooltip from '$lib/shared/components/tooltip/Tooltip.svelte';
+	import GitHub from '$lib/shared/icons/GitHub.svelte';
+	import Snowflake from '$lib/shared/icons/Snowflake.svelte';
 
 	type Props = {
 		title: string;
@@ -76,8 +77,11 @@
 				</div>
 			</div>
 			<div class="flex flex-row items-center justify-end gap-4">
+				<Tooltip label="Github">
+					<a href="https://github.com/specialdoom/advent-of-svelte"><GitHub /></a>
+				</Tooltip>
 				<Tooltip label="Toogle snow">
-					<IconButton onclick={onClick}>❄️</IconButton>
+					<IconButton onclick={onClick}><Snowflake /></IconButton>
 				</Tooltip>
 				<ThemeSwitcher />
 			</div>

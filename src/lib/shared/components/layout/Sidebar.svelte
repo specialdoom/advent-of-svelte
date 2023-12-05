@@ -1,6 +1,4 @@
 <script lang="ts">
-	import House from '$lib/shared/icons/House.svelte';
-
 	type Props = {
 		title: string;
 	};

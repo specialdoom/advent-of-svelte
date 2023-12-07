@@ -6,6 +6,7 @@
 	import Tooltip from '$lib/shared/components/tooltip/Tooltip.svelte';
 	import GitHub from '$lib/shared/icons/GitHub.svelte';
 	import Snowflake from '$lib/shared/icons/Snowflake.svelte';
+	import Beat from '../heart/Beat.svelte';
 
 	type Props = {
 		title: string;
@@ -32,9 +33,16 @@
 <header
 	class="sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-[48] w-full bg-white border-b text-sm py-2.5 sm:py-4 lg:ps-64 dark:bg-gray-800 dark:border-gray-700"
 >
-	<nav class="flex basis-full items-center w-full mx-auto px-4 sm:px-6 md:px-8" aria-label="Global">
+	<nav
+		class="flex basis-full items-center w-full mx-auto px-4 sm:px-6 md:px-8"
+		aria-label="Global"
+	>
 		<div class="me-5 lg:me-0 lg:hidden">
-			<a class="flex-none text-xl font-semibold dark:text-white" href="/" aria-label={title}>
+			<a
+				class="flex-none text-xl font-semibold dark:text-white"
+				href="/"
+				aria-label={title}
+			>
 				{title}
 			</a>
 		</div>
@@ -56,7 +64,8 @@
 						stroke="currentColor"
 						stroke-width="2"
 						stroke-linecap="round"
-						stroke-linejoin="round"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg
+						stroke-linejoin="round"
+						><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg
 					>
 				</button>
 			</div>
@@ -64,7 +73,9 @@
 			<div class="hidden sm:block">
 				<label for="icon" class="sr-only">Search</label>
 				<div class="relative">
-					<div class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-4">
+					<div
+						class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-4"
+					>
 						<Magnifier />
 					</div>
 					<input
@@ -77,11 +88,16 @@
 				</div>
 			</div>
 			<div class="flex flex-row items-center justify-end gap-4">
+				<Beat />
 				<Tooltip label="Github">
-					<a href="https://github.com/specialdoom/advent-of-svelte"><GitHub /></a>
+					<a href="https://github.com/specialdoom/advent-of-svelte">
+						<GitHub />
+					</a>
 				</Tooltip>
 				<Tooltip label="Toogle snow">
-					<IconButton onclick={onClick}><Snowflake /></IconButton>
+					<IconButton onclick={onClick}>
+						<Snowflake />
+					</IconButton>
 				</Tooltip>
 				<ThemeSwitcher />
 			</div>

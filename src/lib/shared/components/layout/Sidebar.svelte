@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Beat from '../heart/Beat.svelte';
+
 	type Props = {
 		title: string;
 	};
@@ -29,40 +31,14 @@
 				stroke-width="2"
 				stroke-linecap="round"
 				stroke-linejoin="round"
-				><line x1="3" x2="21" y1="6" y2="6" /><line x1="3" x2="21" y1="12" y2="12" /><line
+				><line x1="3" x2="21" y1="6" y2="6" /><line
 					x1="3"
 					x2="21"
-					y1="18"
-					y2="18"
-				/></svg
+					y1="12"
+					y2="12"
+				/><line x1="3" x2="21" y1="18" y2="18" /></svg
 			>
 		</button>
-		<ol class="ms-3 flex items-center whitespace-nowrap" aria-label="Breadcrumb">
-			<li class="flex items-center text-sm text-gray-800 dark:text-gray-400">
-				Application Layout
-				<svg
-					class="flex-shrink-0 mx-3 overflow-visible h-2.5 w-2.5 text-gray-400 dark:text-gray-600"
-					width="16"
-					height="16"
-					viewBox="0 0 16 16"
-					fill="none"
-					xmlns="http://www.w3.org/2000/svg"
-				>
-					<path
-						d="M5 1L10.6869 7.16086C10.8637 7.35239 10.8637 7.64761 10.6869 7.83914L5 14"
-						stroke="currentColor"
-						stroke-width="2"
-						stroke-linecap="round"
-					/>
-				</svg>
-			</li>
-			<li
-				class="text-sm font-semibold text-gray-800 truncate dark:text-gray-400"
-				aria-current="page"
-			>
-				Children
-			</li>
-		</ol>
 	</div>
 </div>
 
@@ -72,13 +48,24 @@
 >
 	<div class="px-6">
 		<a
-			class="flex-none text-xl font-semibold dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+			class="flex items-center gap-1 text-xl font-semibold dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
 			href="/"
-			aria-label={title}>{title}</a
+			aria-label={title}
 		>
+			<img class="w-5 h-auto" src="santa-svelte.png" alt="..." />
+			{title}
+		</a>
+		<p
+			class="mt-1 text-xs font-medium uppercase text-gray-500 dark:text-gray-500"
+		>
+			by specialdoom
+		</p>
 	</div>
 
-	<nav class="hs-accordion-group p-6 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
+	<nav
+		class="hs-accordion-group p-6 w-full flex flex-col flex-wrap"
+		data-hs-accordion-always-open
+	>
 		<ul class="space-y-1.5">
 			<li>
 				<a
@@ -86,6 +73,14 @@
 					href="/"
 				>
 					🎁 Children
+				</a>
+			</li>
+			<li>
+				<a
+					class="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm text-slate-700 rounded-lg hover:bg-gray-100 dark:bg-gray-900 dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+					href="/slb"
+				>
+					🛷 Sleigh
 				</a>
 			</li>
 		</ul>

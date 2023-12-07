@@ -1,4 +1,4 @@
-import { getChildHttpClient, type ChildHttpClient } from './modules';
+import { getChildHttpClient, getPresentHttpClient, type ChildHttpClient, type PresentHttpClient, getHeartHttpClient, type HeartHttpClient } from './modules';
 
 /**
  * Creates a new readonly http client interface that allows you to access the
@@ -6,7 +6,9 @@ import { getChildHttpClient, type ChildHttpClient } from './modules';
  */
 export default function getHttpClient(): HttpClient {
 	return Object.freeze({
-		children: getChildHttpClient
+		children: getChildHttpClient,
+		present: getPresentHttpClient,
+		heart: getHeartHttpClient
 	});
 }
 
@@ -14,4 +16,10 @@ export default function getHttpClient(): HttpClient {
 export interface HttpClient {
 	/** Http client for the child module. */
 	children(): ChildHttpClient;
+
+	/** Http client for the present module. */
+	present(): PresentHttpClient;
+
+	/** Http client for the heart module. */
+	heart(): HeartHttpClient;
 }

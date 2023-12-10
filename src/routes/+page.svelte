@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Child } from '$lib/server/services/http/modules/index.js';
+	import type { Child } from '$lib/shared/services/http/modules/index.js';
 	import Card from '$lib/shared/components/card/Card.svelte';
 	import CookieCounter from '$lib/shared/components/cookie-counter/CookieCounter.svelte';
 	import Dropdown from '$lib/shared/components/dropdown/Dropdown.svelte';

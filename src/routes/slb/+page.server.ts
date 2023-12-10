@@ -1,4 +1,4 @@
-import { http } from '$lib/server/services';
+import { http } from '$lib/shared/services';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async () => {

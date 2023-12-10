@@ -1,5 +1,5 @@
-import { http } from '$lib/server/services';
-import type { Child } from '$lib/server/services/http/modules/child';
+import { http } from '$lib/shared/services';
+import type { Child } from '$lib/shared/services/http/modules/child';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async () => {

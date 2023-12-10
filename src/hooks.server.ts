@@ -1,6 +1,6 @@
 import { building } from '$app/environment';
-import { init } from '$lib/server';
+import { init as initSharedServices } from '$lib/shared';
 
 if (!building) {
-	init();
+	initSharedServices();
 }

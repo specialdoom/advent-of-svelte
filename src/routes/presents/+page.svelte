@@ -1,10 +1,10 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import LegendIndicator from '$lib/shared/components/legend-indicator/LegendIndicator.svelte';
-	import dayjs from 'dayjs';
-	let { data } = $props();
+	let { data, form } = $props();
 </script>
 
-<LegendIndicator label="Part of day 5" />
+<LegendIndicator label="Part of day 5 and day 11" />
 <ul
 	class="max-w-xs flex flex-col overflow-y-auto max-h-96 overflow-hidden lg:overflow-auto scrollbar:!w-1.5 scrollbar:!h-1.5 scrollbar:bg-transparent scrollbar-track:!bg-slate-100 scrollbar-thumb:!rounded scrollbar-thumb:!bg-slate-300 scrollbar-track:!rounded dark:scrollbar-track:!bg-slate-500/[0.16] dark:scrollbar-thumb:!bg-slate-500/50"
 >
@@ -19,7 +19,6 @@
 		>
 			{task.task === 'CREATED_TOY' ? '🪀' : '🎁'}
 			{task.elf}
-			{dayjs().to(task.date)}
 			{task.minutesTaken}minutes
 		</li>
 	{/each}
@@ -29,3 +28,13 @@
 		<a href="/presents">See more tasks...</a>
 	</li>
 </ul>
+
+<div>
+	<form method="POST" use:enhance>
+		<input type="first-name" />
+		<input type="last-name" />
+		<button type="submit">Submit</button>
+		{form?.error}
+		{form?.name}
+	</form>
+</div>

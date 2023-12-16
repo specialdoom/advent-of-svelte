@@ -9,3 +9,6 @@ export * from './heart';
 
 export { default as getTaskHttpClient } from './task';
 export * from './task';
+
+export { default as getNameHttpClient } from './name';
+export * from './name';

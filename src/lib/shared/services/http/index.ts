@@ -1,4 +1,4 @@
-import { getChildHttpClient, getPresentHttpClient, type ChildHttpClient, type PresentHttpClient, getHeartHttpClient, type HeartHttpClient, getTaskHttpClient, type TaskHttpClient } from './modules';
+import { getChildHttpClient, getPresentHttpClient, type ChildHttpClient, type PresentHttpClient, getHeartHttpClient, type NameHttpClient, getTaskHttpClient, type TaskHttpClient, getNameHttpClient, type HeartHttpClient } from './modules';
 
 /**
  * Creates a new readonly http client interface that allows you to access the
@@ -9,7 +9,8 @@ export default function getHttpClient(): HttpClient {
 		children: getChildHttpClient,
 		present: getPresentHttpClient,
 		heart: getHeartHttpClient,
-		task: getTaskHttpClient
+		task: getTaskHttpClient,
+		name: getNameHttpClient
 	});
 }
 
@@ -26,4 +27,7 @@ export interface HttpClient {
 
 	/** Http client for the task module. */
 	task(): TaskHttpClient;
+
+	/** Http client for the name module. */
+	name(): NameHttpClient
 }

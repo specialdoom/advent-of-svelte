@@ -7,6 +7,7 @@
 	import GitHub from '$lib/shared/icons/GitHub.svelte';
 	import Snowflake from '$lib/shared/icons/Snowflake.svelte';
 	import Beat from '../heart/Beat.svelte';
+	import SantaTimer from '../santa-timer/SantaTimer.svelte';
 
 	type Props = {
 		title: string;
@@ -88,6 +89,7 @@
 				</div>
 			</div>
 			<div class="flex flex-row items-center justify-end gap-4">
+				<SantaTimer />
 				<Beat />
 				<Tooltip label="Github">
 					<a href="https://github.com/specialdoom/advent-of-svelte">

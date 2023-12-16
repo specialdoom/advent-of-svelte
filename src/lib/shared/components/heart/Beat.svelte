@@ -29,7 +29,7 @@
 
 {#if heartRate > 0}
 	<div
-		class="w-full flex rounded backdrop-blur-sm bg-white/30 col-span-1 px-2 py-2 h-9 items-center gap-2 text-1xl"
+		class="w-24 flex rounded backdrop-blur-sm bg-white/30 col-span-1 px-2 py-2 h-9 items-center gap-2 text-1xl"
 	>
 		<span class="heart">❤️</span>
 		<strong>{heartRate}bpm</strong>

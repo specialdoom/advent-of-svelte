@@ -1,11 +1,8 @@
 <script lang="ts">
-	import { snow } from '$lib/client/services';
 	import Magnifier from '$lib/shared/icons/Magnifier.svelte';
-	import IconButton from '../button/IconButton.svelte';
 	import ThemeSwitcher from '../theme-switcher/ThemeSwitcher.svelte';
 	import Tooltip from '$lib/shared/components/tooltip/Tooltip.svelte';
 	import GitHub from '$lib/shared/icons/GitHub.svelte';
-	import Snowflake from '$lib/shared/icons/Snowflake.svelte';
 	import Beat from '../heart/Beat.svelte';
 	import SantaTimer from '../santa-timer/SantaTimer.svelte';
 
@@ -14,21 +11,6 @@
 	};
 
 	let { title } = $props<Props>();
-	let showSnowflakes = $state(true);
-
-	$effect(() => {
-		if (showSnowflakes) {
-			snow.start();
-			snow.show();
-		} else {
-			snow.stop();
-			snow.hide();
-		}
-	});
-
-	function onClick() {
-		showSnowflakes = !showSnowflakes;
-	}
 </script>
 
 <header
@@ -95,11 +77,6 @@
 					<a href="https://github.com/specialdoom/advent-of-svelte">
 						<GitHub />
 					</a>
-				</Tooltip>
-				<Tooltip label="Toogle snow">
-					<IconButton onclick={onClick}>
-						<Snowflake />
-					</IconButton>
 				</Tooltip>
 				<ThemeSwitcher />
 			</div>

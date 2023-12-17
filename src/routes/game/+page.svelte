@@ -10,9 +10,8 @@
 
 	let flipped: any[] = $state([]);
 	let correct: any[] = $state([]);
-	let cards = $state(cardsNumber);
-	let cardss = $derived(
-		cards.map((x) => ({
+	let cards = $derived(
+		cardsNumber.map((x) => ({
 			...x,
 			flipped: correct.includes(x.value) || flipped.some((y) => y.id === x.id)
 		}))
@@ -28,7 +27,7 @@
 			const [first, second] = flipped;
 
 			if (first.value === second.value) {
-				correct.push(first.value);
+				correct = [...correct, first.value];
 				flipped = [];
 			}
 		}
@@ -39,13 +38,13 @@
 	});
 
 	function onButtonClick(cardId: any) {
-		flipped.push(cardId);
+		flipped = [...flipped, cardId];
 		clicked = cardId;
 	}
 </script>
 
 <div class="grid gap-x-8 gap-y-4 grid-cols-8">
-	{#each cardss as card (card.id)}
+	{#each cards as card (card.id)}
 		<div>
 			{#if card.flipped}
 				<img
@@ -55,10 +54,10 @@
 				/>
 			{:else}
 				<button
-					onclick={() => onButtonClick(card)}
-					class="h-24 w-16 rounded bg-gray-600 flex items-center justify-center"
+					onclick={() => onButtonClick(card.id)}
+					class="h-24 w-16 flex items-center justify-center border rounded-xl dark:border-gray-800"
 				>
-					{card.value}
+					🎄
 				</button>
 			{/if}
 		</div>

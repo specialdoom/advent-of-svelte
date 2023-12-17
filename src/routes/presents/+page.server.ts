@@ -4,11 +4,20 @@ import type { Actions, PageServerLoad } from './$types';
 export const load: PageServerLoad = async () => {
   try {
     const tasks = await http.task().getAll();
+    const presentsInHangar = await http.present().getPositions();
 
-    return { tasks };
+    const hangar = presentsInHangar.reduce((a, c) => {
+      const { x, y } = c;
+
+      a[x][y] = a[x][y] + 1;
+
+      return a;
+    }, Array(21).fill(0).map(() => Array(21).fill(0)))
+
+    return { tasks, hangar };
   } catch (e) {
     console.error('💀 could not retrieve tasks', e);
-    return { tasks: [] };
+    return { tasks: [], hangar: [] };
   }
 };
 
